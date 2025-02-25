@@ -1,0 +1,259 @@
+:root {
+  --gradient: linear-gradient(
+    180deg,
+    rgba(45, 112, 125, 0.73) 0%,
+    #163e92 100%
+  );
+  --dark: #001747;
+  --grey: #b1bacb;
+  --grey-border: rgba(210, 210, 210, 0.75);
+  --grey-light: #eeeeee;
+  --grey-dark: #405175;
+  --blue: #2d70fd;
+  --green: #00d8a7;
+  --white: #ffffff;
+}
+
+body {
+  background: url('images/er_1.jpg'); /* Add the image after the gradient */
+  background-size: cover; /* Make sure the image covers the entire page */
+  background-position: center; /* Center the background image */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-attachment: fixed; /* Make the background fixed during scroll */
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
+
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+/* Buttons */
+.btn {
+  color: var(--white);
+  font-size: 1rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 0.3rem;
+  background-color: var(--blue);
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+}
+
+.btn:hover {
+  background-color: #1e5ab2;
+  transform: scale(1.05);
+}
+
+
+/* Define the gradient shift animation */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Main todo box styling */
+.todo {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  border-radius: 2rem;
+  background: rgba(255, 255, 255, 0.288); /* Transparent background inside */
+  padding: 3rem;
+  height: 50%;
+  width: 60%;
+  max-width: 30rem;
+  position: relative; /* Allows positioning of pseudo-element */
+  overflow: hidden; /* Hide the overflowed pseudo-element */
+}
+
+/* Add the outer frosted glass effect on the border using a pseudo-element */
+.todo::before {
+  content: '';
+  position: absolute;
+  top: -5px; /* Extend the pseudo-element beyond the edges */
+  left: -5px;
+  right: -5px;
+  bottom: -5px;
+  background: rgba(255, 255, 255, 0.1); /* Transparent background for outer glass effect */
+  border-radius: 2rem;
+  z-index: -1; /* Place behind the box */
+  backdrop-filter: blur(10px); /* Apply blur effect to the outer border */
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.3); /* Light glow effect for the outer border */
+  animation: gradientShift 5s ease infinite; /* Infinite animation of the outer gradient */
+}
+
+/* Optional: Hover effect to add depth */
+.todo:hover {
+  box-shadow: 0 1.5rem 4rem rgba(197, 200, 206, 0.712);
+}
+
+
+h2 {
+  text-transform: uppercase;
+  height: 3rem;
+  color: var(--dark);
+  text-align: center;
+  padding-bottom: 20px;
+}
+
+.input {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.input-field {
+  display: flex;
+  width: 100%;
+  border: 0.06rem solid #d2d2d2bf;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  font-size: 1rem;
+}
+
+input[type="text"]::placeholder {
+  color: var(--grey);
+}
+
+.todo-container {
+  display: flex;
+  gap: 1rem;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+  overflow-y: scroll;
+}
+
+li {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  padding: 1.3rem;
+}
+
+#todoList p {
+  display: flex;
+  gap: 1rem;
+  color: var(--dark);
+  align-items: center;
+}
+
+#todoList .disabled {
+  color: #8f98a8;
+}
+
+.disabled {
+  display: flex;
+  text-decoration: line-through;
+}
+
+input[type="checkbox"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+input[type="checkbox"]::before {
+  content: "\2713";
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  font-size: 1.7rem;
+  text-align: center;
+  border: 0.06rem solid var(--grey-border);
+  border-radius: 50%;
+  color: transparent;
+  transition: background-color 0.2s ease, border-color 0.2s ease;
+}
+
+input[type="checkbox"]:checked::before {
+  color: var(--white);
+  background-color: var(--green);
+  border: 0.06rem solid var(--green);
+  border-radius: 50%;
+}
+
+.counter {
+  border: 0.06rem solid var(--grey-light);
+}
+
+.counter-container {
+  height: 2rem;
+  display: flex;
+  justify-content: space-between;
+  color: var(--grey);
+}
+
+.counter-container p {
+  align-self: center;
+}
+
+.counter-container button {
+  border: none;
+  background-color: transparent;
+  color: var(--grey);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.counter-container button:hover {
+  color: var(--blue);
+  text-decoration: underline;
+}
+
+.scroll {
+  height: 15rem;
+  scrollbar-width: thin;
+}
+
+.scroll::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+.scroll::-webkit-scrollbar-thumb {
+  background-color: var(--blue);
+  border-radius: 0.5rem;
+}
+
+.scroll::-webkit-scrollbar-track {
+  display: none;
+}
+
+
+#deleteButton {
+  color: var(--white);
+  font-size: 1rem;
+  padding: 0.7rem 1.5rem;
+  border-radius: 0.3rem;
+  background-color: #96281c;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  text-decoration: none;
+}
+
+#deleteButton:hover {
+  background-color: #c0392b; /* Darker red on hover */
+  transform: scale(1.05); /* Slightly increase size on hover */
+}
