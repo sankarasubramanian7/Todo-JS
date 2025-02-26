@@ -11,9 +11,7 @@ A simple To-Do app built using HTML, CSS, and JavaScript. This app allows users 
 
 ## Demo
 
-![Demo](./images/todo-app-demo.gif)
-
-> Check out the live demo [here](your-deployed-link.com).
+> Check out the live demo [here](https://todo-blond-ten.vercel.app/).
 
 ## Files
 
